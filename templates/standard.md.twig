@@ -1,0 +1,46 @@
+{#
+This templates expects 3 arrays :
+- newPackages array of Package
+- updatedPackages array of UpdatedPackage
+- deletedPackages array of Package
+#}
+
+{% if newPackages %}
+
+## New Packages
+
+|package|version added|
+|----|----|
+{% for package in newPackages %}
+|{{ package.name }}|[{{ package.version }}]({{ package.url }}//releases/tag/{{ package.version }})|
+{% endfor %}
+
+{% endif %}
+
+
+{% if updatedPackages %}
+
+## Updated Packages
+
+|package|version update|
+|----|----|
+{% for updatedPackage in updatedPackages %}
+{% set versionDiff = updatedPackage.previousversion ~ '...' ~ updatedPackage.version %}
+|{{ updatedPackage.name }}|[{{versionDiff}}]({{ updatedPackage.url }}//compare/{{ versionDiff }})|
+{% endfor %}
+
+{% endif %}
+
+
+{% if deletedPackages %}
+
+## Deleted Packages
+
+|package|version removed|
+|----|----|
+{% for package in deletedPackages %}
+|{{ package.name }}|[{{ package.version }}]({{ package.url }}//releases/tag/{{ package.version }})|
+{% endfor %}
+
+{% endif %}
+

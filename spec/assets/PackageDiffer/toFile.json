@@ -1,0 +1,25 @@
+{
+    "packages": [
+        {
+            "name": "ignore",
+            "version": "2",
+            "source": {
+                "url": "https://github.com/ignore.git"
+            }
+        },
+        {
+            "name": "updated",
+            "version": "4",
+            "source": {
+                "url": "https://github.com/updated.git"
+            }
+        },
+        {
+            "name": "new",
+            "version": "44",
+            "source": {
+                "url": "https://github.com/new.git"
+            }
+        }
+    ]
+}

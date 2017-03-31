@@ -1,2 +1,5 @@
+composer.lock
 local-samples
-
+vendor
+bin/phpspec
+.php_cs.cache
