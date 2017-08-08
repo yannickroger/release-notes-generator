@@ -12,7 +12,7 @@ This templates expects 3 arrays :
 |package|version added|
 |----|----|
 {% for package in newPackages %}
-|{{ package.name }}|[{{ package.version }}]({{ package.url }}//releases/tag/{{ package.version }})|
+|{{ package.name }}|[{{ package.version }}]({{ package.url }}/releases/tag/{{ package.version }})|
 {% endfor %}
 
 {% endif %}
@@ -22,11 +22,11 @@ This templates expects 3 arrays :
 
 ## Updated Packages
 
-|package|version update|
+|package release|version diff|
 |----|----|
 {% for updatedPackage in updatedPackages %}
 {% set versionDiff = updatedPackage.previousversion ~ '...' ~ updatedPackage.version %}
-|{{ updatedPackage.name }}|[{{versionDiff}}]({{ updatedPackage.url }}//compare/{{ versionDiff }})|
+|[{{ updatedPackage.name }}]({{ updatedPackage.url }}/releases/{{ updatedPackage.version }})|[{{versionDiff}}]({{ updatedPackage.url }}/compare/{{ versionDiff }})|
 {% endfor %}
 
 {% endif %}
@@ -39,7 +39,7 @@ This templates expects 3 arrays :
 |package|version removed|
 |----|----|
 {% for package in deletedPackages %}
-|{{ package.name }}|[{{ package.version }}]({{ package.url }}//releases/tag/{{ package.version }})|
+|{{ package.name }}|[{{ package.version }}]({{ package.url }}/releases/tag/{{ package.version }})|
 {% endfor %}
 
 {% endif %}
