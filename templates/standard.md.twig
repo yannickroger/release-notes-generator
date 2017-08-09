@@ -26,7 +26,7 @@ This templates expects 3 arrays :
 |----|----|
 {% for updatedPackage in updatedPackages %}
 {% set versionDiff = updatedPackage.previousversion ~ '...' ~ updatedPackage.version %}
-|[{{ updatedPackage.name }}]({{ updatedPackage.url }}/releases/{{ updatedPackage.version }})|[{{versionDiff}}]({{ updatedPackage.url }}/compare/{{ versionDiff }})|
+|[{{ updatedPackage.name }} {{ updatedPackage.version }}]({{ updatedPackage.url }}/releases/{{ updatedPackage.version }})|[{{versionDiff}}]({{ updatedPackage.url }}/compare/{{ versionDiff }})|
 {% endfor %}
 
 {% endif %}
