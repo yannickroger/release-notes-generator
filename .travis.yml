@@ -1,0 +1,20 @@
+language: php
+
+php:
+    - 7.0
+    - 7.1
+
+# test only master (+ Pull requests)
+branches:
+    only:
+        - master
+
+before_script:
+    - travis_retry composer selfupdate
+    - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+    - travis_retry composer install --prefer-dist --no-interaction
+
+script: ./bin/phpspec run --format=pretty
+
+notifications:
+email: false
