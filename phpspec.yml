@@ -1,0 +1,5 @@
+suites:
+    release_notes_generator:
+        namespace: RNGenerator
+        psr4_prefix: RNGenerator
+        src_path: ./src/lib

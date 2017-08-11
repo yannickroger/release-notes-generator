@@ -6,8 +6,9 @@
     "bin-dir": "bin"
   },
   "autoload": {
-    "psr-0": {
-      "": "src"
+    "psr-4": {
+      "RNGenerator\\": "src/lib",
+      "specs\\RNGenerator\\": "spec/"
     }
   },
   "require": {
