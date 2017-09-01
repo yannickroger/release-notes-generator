@@ -8,10 +8,12 @@
   "autoload": {
     "psr-4": {
       "RNGenerator\\": "src/lib",
+      "RNGeneratorBundle\\": "src/bundle",
       "specs\\RNGenerator\\": "spec/"
     }
   },
   "require": {
-    "twig/twig": "~1.0"
+    "twig/twig": "~1.0",
+    "symfony/console": "^3.3"
   }
 }
