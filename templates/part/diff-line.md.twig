@@ -1,0 +1,6 @@
+{#
+This templates expects:
+- updatedPackage a UpdatedPackage
+#}
+{% set versionDiff = updatedPackage.previousversion ~ '...' ~ updatedPackage.version %}
+|[{{ updatedPackage.name }} {{ updatedPackage.version }}]({{ updatedPackage.url }}/releases/{{ updatedPackage.version }})|[{{versionDiff}}]({{ updatedPackage.url }}/compare/{{ versionDiff }})|

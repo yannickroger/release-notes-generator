@@ -1,0 +1,68 @@
+{#
+This templates expects 3 arrays :
+- newPackages array of Package
+- updatedPackages array of UpdatedPackage
+- deletedPackages array of Package
+#}
+
+{% set regExp = "/^ezsystems.*|^ezplatform.*/" %}
+
+{% set externalPackageFound = false %}
+{% set newExternalPackages = [] %}
+{% set updatedExternalPackages = [] %}
+{% set deletedExternalPackages = [] %}
+
+{% set ezPackageFound = false %}
+{% set newEzPackages = [] %}
+{% set updatedEzPackages = [] %}
+{% set deletedEzPackages = [] %}
+
+{% for newPackage in newPackages %}
+    {% if newPackage.name matches regExp  %}
+        {% set newEzPackages = newEzPackages |merge([newPackage]) %}
+        {% set ezPackageFound = true %}
+    {% else %}
+        {% set newExternalPackages = newExternalPackages |merge([newPackage]) %}
+        {% set externalPackageFound = true %}
+    {% endif %}
+{% endfor %}
+
+{% for updatedPackage in updatedPackages %}
+    {% if updatedPackage.name matches regExp  %}
+        {% set updatedEzPackages = updatedEzPackages |merge([updatedPackage]) %}
+        {% set ezPackageFound = true %}
+    {% else %}
+        {% set updatedExternalPackages = updatedExternalPackages |merge([updatedPackage]) %}
+        {% set externalPackageFound = true %}
+    {% endif %}
+{% endfor %}
+
+{% for deletedPackage in deletedPackages %}
+    {% if deletedPackage.name matches regExp  %}
+        {% set deletedEzPackages = deletedEzPackages |merge([deletedPackage]) %}
+        {% set ezPackageFound = true %}
+    {% else %}
+        {% set deletedExternalPackages = deletedExternalPackages |merge([deletedPackage]) %}
+        {% set externalPackageFound = true %}
+    {% endif %}
+{% endfor %}
+
+{% if ezPackageFound %}
+## eZ
+
+{% include 'standard.md.twig' with {
+    'newPackages' : newEzPackages,
+    'updatedPackages' : updatedEzPackages,
+    'deletedPackages' : deletedEzPackages
+} %}
+{% endif %}
+
+{% if externalPackageFound %}
+## External Packages
+
+{% include 'standard.md.twig' with {
+    'newPackages' : newExternalPackages,
+    'updatedPackages' : updatedExternalPackages,
+    'deletedPackages' : deletedExternalPackages
+} %}
+{% endif %}
