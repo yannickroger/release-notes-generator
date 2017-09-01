@@ -6,41 +6,34 @@ This templates expects 3 arrays :
 #}
 
 {% if newPackages %}
-
-## New Packages
+### New Packages
 
 |package|version added|
 |----|----|
 {% for package in newPackages %}
-|{{ package.name }}|[{{ package.version }}]({{ package.url }}/releases/tag/{{ package.version }})|
+{% include 'part/version-line.md.twig' with {'package':package} %}
 {% endfor %}
 
 {% endif %}
 
-
 {% if updatedPackages %}
-
-## Updated Packages
+### Updated Packages
 
 |package release|version diff|
 |----|----|
 {% for updatedPackage in updatedPackages %}
-{% set versionDiff = updatedPackage.previousversion ~ '...' ~ updatedPackage.version %}
-|[{{ updatedPackage.name }} {{ updatedPackage.version }}]({{ updatedPackage.url }}/releases/{{ updatedPackage.version }})|[{{versionDiff}}]({{ updatedPackage.url }}/compare/{{ versionDiff }})|
+{% include 'part/diff-line.md.twig' with {'updatedPackage':updatedPackage} %}
 {% endfor %}
 
 {% endif %}
 
-
 {% if deletedPackages %}
-
-## Deleted Packages
+### Deleted Packages
 
 |package|version removed|
 |----|----|
 {% for package in deletedPackages %}
-|{{ package.name }}|[{{ package.version }}]({{ package.url }}/releases/tag/{{ package.version }})|
+{% include 'part/version-line.md.twig' with {'package':package} %}
 {% endfor %}
 
 {% endif %}
-

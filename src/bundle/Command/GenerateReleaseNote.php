@@ -13,7 +13,7 @@ class GenerateReleaseNote extends Command
     protected function configure()
     {
         $this
-            ->setName('app:generate')
+            ->setName('releasenote:generate')
             ->setDescription('Generate the release note')
             ->setHelp('This command generates the release note using 2 composer.lock files as parameters')
             ->addArgument(
@@ -25,6 +25,11 @@ class GenerateReleaseNote extends Command
             'toFilePath',
             InputArgument::REQUIRED,
             'Path of the composer.lock file of the new version'
+            )
+            ->addArgument(
+                'templateName',
+                InputArgument::OPTIONAL,
+                'Name of the template to be used: "standard" (default) or "ez"'
             )
         ;
     }
@@ -39,7 +44,13 @@ class GenerateReleaseNote extends Command
             $toFilePath
         );
 
-        $renderer = new ReleaseNoteRenderer();
+        $templateName = null;
+
+        if ($input->getArgument('templateName') == 'ez') {
+            $templateName = 'ez.md.twig';
+        }
+
+        $renderer = new ReleaseNoteRenderer($templateName);
 
         $output->writeln($renderer->render($packageDiffer));
     }
