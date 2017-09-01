@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+require __DIR__.'/../vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use RNGeneratorBundle\Command\GenerateReleaseNote;
+
+$application = new Application('Release note Generator');
+$command = new GenerateReleaseNote();
+
+$application->add($command);
+
+$application->setDefaultCommand($command->getName(), true);
+$application->run();

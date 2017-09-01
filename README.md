@@ -12,7 +12,7 @@ composer install
 
 ## Usage
 ```
-php bin/release-notes-generator.php composer-1.8.0.lock composer-1.8.1-rc.lock
+php bin/generate composer-1.8.0.lock composer-1.8.1-rc.lock
 ```
 
 
