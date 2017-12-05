@@ -11,27 +11,27 @@ class PackageSpec extends ObjectBehavior
     private $version;
     private $url;
 
-    function let()
+    public function let()
     {
         $this->beConstructedWith($this->name, $this->version, $this->url);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(Package::class);
     }
 
-    function it_has_a_name()
+    public function it_has_a_name()
     {
         $this->getName()->shouldReturn($this->name);
     }
 
-    function it_has_a_version()
+    public function it_has_a_version()
     {
         $this->getVersion()->shouldReturn($this->version);
     }
 
-    function it_has_a_url()
+    public function it_has_a_url()
     {
         $this->getUrl()->shouldReturn($this->url);
     }

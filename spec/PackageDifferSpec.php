@@ -13,17 +13,17 @@ class PackageDifferSpec extends ObjectBehavior
     private $fromFile = 'spec/assets/PackageDiffer/fromFile.json';
     private $toFile = 'spec/assets/PackageDiffer/toFile.json';
 
-    function let()
+    public function let()
     {
         $this->beConstructedWith($this->fromFile, $this->toFile);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(PackageDiffer::class);
     }
 
-    function it_loads_packages_from_file()
+    public function it_loads_packages_from_file()
     {
         $packages = $this->getPackages($this->loaderFilePath);
 
@@ -37,7 +37,7 @@ class PackageDifferSpec extends ObjectBehavior
         $package->getUrl()->shouldBe($trimedUrl);
     }
 
-    function it_generates_the_list_of_new_packages()
+    public function it_generates_the_list_of_new_packages()
     {
         $newPackages = $this->generateNewPackages();
 
@@ -49,7 +49,7 @@ class PackageDifferSpec extends ObjectBehavior
         $newPackage->getName()->shouldBe('new');
     }
 
-    function it_generates_the_list_of_updated_packages()
+    public function it_generates_the_list_of_updated_packages()
     {
         $updatedPackages = $this->generateUpdatedPackages();
 
@@ -63,7 +63,7 @@ class PackageDifferSpec extends ObjectBehavior
         $updatedPackage->getPreviousVersion()->shouldBe('3');
     }
 
-    function it_generates_the_list_of_deleted_packages()
+    public function it_generates_the_list_of_deleted_packages()
     {
         $deletedPackages = $this->generateDeletedPackages();
 
