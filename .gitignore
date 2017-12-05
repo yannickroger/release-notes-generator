@@ -2,4 +2,5 @@ composer.lock
 local-samples
 vendor
 bin/phpspec
+bin/php-cs-fixer
 .php_cs.cache

@@ -9,12 +9,17 @@ branches:
     only:
         - master
 
-before_script:
+install:
+    - phpenv config-rm xdebug.ini
     - travis_retry composer selfupdate
     - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
     - travis_retry composer install --prefer-dist --no-interaction
 
-script: ./bin/phpspec run --format=pretty
+script: 
+    - CHANGED_FILES=$(git diff --name-only --diff-filter=ACMRTUXB "${TRAVIS_COMMIT_RANGE}") & if ! echo "${CHANGED_FILES}" | grep -qE "^(\\.php_cs(\\.dist)?|composer\\.lock)$"; then IFS=$'\n' EXTRA_ARGS=('--path-mode=intersection' '--' ${CHANGED_FILES[@]}); fi & bin/php-cs-fixer fix --config=.php_cs.dist -v --dry-run --stop-on-violation --using-cache=no "${EXTRA_ARGS[@]}"
+
+
+    - ./bin/phpspec run --format=pretty
 
 notifications:
 email: false
