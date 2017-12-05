@@ -13,7 +13,7 @@ class UpdatedPackage extends Package
      * UpdatedPackage constructor.
      *
      * @param Package $package
-     * @param string $previousVersion
+     * @param string  $previousVersion
      */
     public function __construct(Package $package, $previousVersion)
     {

@@ -21,11 +21,11 @@ class ReleaseNoteRenderer
      * ReleaseNoteRenderer constructor.
      *
      * @param string|null $templateName (Optional) if provided the template name to be used to
-     *      render the release note.
+     *                                  render the release note
      */
     public function __construct($templateName = null)
     {
-        if ($templateName !== null) {
+        if (null !== $templateName) {
             $this->templateName = $templateName;
         }
     }

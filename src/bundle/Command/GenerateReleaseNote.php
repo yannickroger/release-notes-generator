@@ -1,4 +1,5 @@
 <?php
+
 namespace RNGeneratorBundle\Command;
 
 use RNGenerator\PackageDiffer;
@@ -46,7 +47,7 @@ class GenerateReleaseNote extends Command
 
         $templateName = null;
 
-        if ($input->getArgument('templateName') == 'ez') {
+        if ('ez' == $input->getArgument('templateName')) {
             $templateName = 'ez.md.twig';
         }
 

@@ -18,29 +18,29 @@ class ReleaseNoteRendererSpec extends ObjectBehavior
 
     private $dummyTemplate = 'dummy.md.twig';
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(ReleaseNoteRenderer::class);
     }
 
-    function it_has_the_template_name()
+    public function it_has_the_template_name()
     {
         $this->beConstructedWith($this->customTemplateName);
 
         $this->getTemplateName()->shouldReturn($this->customTemplateName);
     }
 
-    function it_has_the_default_template_name_if_not_provided()
+    public function it_has_the_default_template_name_if_not_provided()
     {
         $this->getTemplateName()->shouldReturn($this->defaultTemplateName);
     }
 
-    function it_has_the_templates_path()
+    public function it_has_the_templates_path()
     {
         $this->getTemplatePath()->shouldBe($this->defaultTemplatePath);
     }
 
-    function it_allows_to_set_the_templates_path()
+    public function it_allows_to_set_the_templates_path()
     {
         $path = 'truc';
 
@@ -48,7 +48,7 @@ class ReleaseNoteRendererSpec extends ObjectBehavior
         $this->getTemplatePath()->shouldBe($path);
     }
 
-    function it_renders_the_release_note(PackageDiffer $packageDiffer)
+    public function it_renders_the_release_note(PackageDiffer $packageDiffer)
     {
         $this->beConstructedWith($this->dummyTemplate);
         $this->setTemplatePath($this->templatePath);

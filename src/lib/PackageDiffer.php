@@ -61,7 +61,7 @@ class PackageDiffer
 
     /**
      * @param Package[] $packageList
-     * @param string $packageName
+     * @param string    $packageName
      *
      * @return null|Package
      */
@@ -114,7 +114,7 @@ class PackageDiffer
         foreach ($this->toPackageList as $toPackage) {
             $fromPackage = $this->findPackageInFromList($toPackage->getName());
 
-            if ($fromPackage === null) {
+            if (null === $fromPackage) {
                 $newPackages[] = $toPackage;
             }
         }
@@ -135,7 +135,7 @@ class PackageDiffer
         foreach ($this->toPackageList as $toPackage) {
             $fromPackage = $this->findPackageInFromList($toPackage->getName());
 
-            if ($fromPackage !== null) {
+            if (null !== $fromPackage) {
                 if ($fromPackage->getVersion() != $toPackage->getVersion()) {
                     $updatedPackage = new UpdatedPackage(
                         $toPackage,
@@ -163,7 +163,7 @@ class PackageDiffer
         foreach ($this->fromPackageList as $fromPackage) {
             $toPackage = $this->findPackageInToList($fromPackage->getName());
 
-            if ($toPackage === null) {
+            if (null === $toPackage) {
                 $deletedPackages[] = $fromPackage;
             }
         }
