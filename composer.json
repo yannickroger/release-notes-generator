@@ -1,4 +1,8 @@
 {
+  "name": "yannickroger/release-notes-generator",
+  "description": "Tool to diff composer.lock files and generate a release note",
+  "license": "MIT",
+
   "require-dev": {
     "phpspec/phpspec": "^3.0",
     "friendsofphp/php-cs-fixer": "^2.8"
